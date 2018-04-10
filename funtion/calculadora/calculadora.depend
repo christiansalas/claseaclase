@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1523328918 source:c:\users\juani\desktop\cris feo\calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1523329264 c:\users\juani\desktop\cris feo\calculadora\funciones.h
+
