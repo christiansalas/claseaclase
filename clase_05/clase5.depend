@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1536605815 source:c:\users\cris_\onedrive\desktop\clase5\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1536605583 c:\users\cris_\onedrive\desktop\clase5\utn.h
+
