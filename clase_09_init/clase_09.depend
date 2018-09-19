@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1537314605 source:/home/alumno/Descargas/C/Clases/clase_09_init/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1537314693 /home/alumno/Descargas/C/Clases/clase_09_init/utn.h
+
+1537314680 source:/home/alumno/Descargas/C/Clases/clase_09_init/utn.c
+	<stdio_ext.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	"utn.h"
+
+1537317915 source:/home/alumno/Entregas/QOQO/clase_09_init/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1537318439 /home/alumno/Entregas/QOQO/clase_09_init/utn.h
+
+1537317831 source:/home/alumno/Entregas/QOQO/clase_09_init/utn.c
+	<stdio_ext.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	"utn.h"
+
