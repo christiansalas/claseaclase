@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1538700403 source:/home/alumno/Descargas/PrimerParcial/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+
+1538700814 /home/alumno/Descargas/PrimerParcial/clientes.h
+
+1538699777 source:/home/alumno/Descargas/PrimerParcial/clientes.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+
+1538699717 /home/alumno/Descargas/PrimerParcial/ventas.h
+
+1538700102 source:/home/alumno/Descargas/PrimerParcial/ventas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+
