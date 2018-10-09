@@ -6,12 +6,8 @@
 #include <ctype.h>
 #include "clientes.h"
 #include "ventas.h"
-
-/**
-* \brief    Evalua si es un nombre valido
-* \param pBuffer Es la cadena que evaluamos
-* \param limite Es el tamano maximo del string
-* \return En caso de exito retorna 1, si no 0
+/* brief inicializa el array en 0 para verificar que esten vacios
+*
 */
 
 int inicializarCliente(Clientes* pBuffer,int limite)
@@ -25,10 +21,10 @@ int inicializarCliente(Clientes* pBuffer,int limite)
 }
 
 /**
-* \brief    Evalua si es un nombre valido
-* \param pBuffer Es la cadena que evaluamos
-* \param limite Es el tamano maximo del string
-* \return En caso de exito retorna 1, si no 0
+* \brief    funcion que da de alta un cliente.
+* \param list es la cadena que evaluamos.
+* \param len Es el tamano maximo del string
+* \return En caso de exito retorna 0, si no -1
 */
 
 int altaCliente(Clientes* list, int len)
@@ -52,31 +48,32 @@ char auxCuit[12];
                          utn_getNombre(auxApellido,50,"\n Ingrese apellido \n","\n Error, apellido Invalido\n", 2)==0
                          &&
                          utn_getLetrasYNumeros(auxCuit,12,"\n Ingrese cuit \n")==0)
-                        {
-                            list[i].idClientes = i;
-                            strncpy(list[i].nombre, auxNombre, 50);
-                            strncpy(list[i].apellido, auxApellido, 50);
-                              strncpy(list[i].cuit, auxCuit, 50);
-                            list[i].isEmpty =  1;
-                            retorno = 0;
+                            {
+                                list[i].idClientes =  getNextId()
+    ;
+                                strncpy(list[i].nombre, auxNombre, 50);
+                                strncpy(list[i].apellido, auxApellido, 50);
+                                  strncpy(list[i].cuit, auxCuit, 50);
+                                list[i].isEmpty =  1;
+                                retorno = 0;
 
-                            printf("idcleinte : %d",list[i].idClientes);
-                            printf(" nombre : %s",list[i].nombre);
-                            printf("apellido : %s",list[i].apellido);
-                            printf("apellido : %s",list[i].cuit);
+                              /*  printf("idcleinte : %d",list[i].idClientes);
+                                printf(" nombre : %s",list[i].nombre);
+                                printf("apellido : %s",list[i].apellido);
+                                printf("apellido : %s",list[i].cuit);*/
 
-                            break;
-                         }
-                    }
+                                break;
+                             }
+                }
             }
 return retorno;
 }
 
 /**
-* \brief    Evalua si es un nombre valido
+* \brief    Evalua si es un string valido
 * \param pBuffer Es la cadena que evaluamos
 * \param limite Es el tamano maximo del string
-* \return En caso de exito retorna 1, si no 0
+* \return En caso de exito retorna 0, si no -1
 */
 int utn_getString(char *pBuffer, int limite)
 {
@@ -103,7 +100,7 @@ int utn_getString(char *pBuffer, int limite)
 * \brief    Evalua si es un nombre valido
 * \param pBuffer Es la cadena que evaluamos
 * \param limite Es el tamano maximo del string
-* \return En caso de exito retorna 1, si no 0
+* \return En caso de exito retorna 0, si no -1
 */
 
 
@@ -138,10 +135,10 @@ int utn_getNombre(  char* pNombre, int limite, char* msg,
 }
 
 /**
-* \brief    Evalua si es un nombre valido
+* \brief    Evalua si es un string valido
 * \param pBuffer Es la cadena que evaluamos
 * \param limite Es el tamano maximo del string
-* \return En caso de exito retorna 1, si no 0
+* \return En caso de exito retorna 0, si no -1
 */
 
  int getString(char* pBuffer, int limite)
@@ -168,7 +165,7 @@ int utn_getNombre(  char* pNombre, int limite, char* msg,
 * \brief    Evalua si es un nombre valido
 * \param pBuffer Es la cadena que evaluamos
 * \param limite Es el tamano maximo del string
-* \return En caso de exito retorna 1, si no 0
+* \return En caso de exito retorna 0, si no -1
 */
 
 
@@ -193,7 +190,7 @@ int utn_getNombre(  char* pNombre, int limite, char* msg,
 
 
 /**
-* \brief    Evalua si es un nombre valido
+* \brief    Evalua si se ingresan letras y numeros
 * \param pBuffer Es la cadena que evaluamos
 * \param limite Es el tamano maximo del string
 * \return En caso de exito retorna 1, si no 0
@@ -212,10 +209,10 @@ int utn_getLetrasYNumeros(char* pBuffer,int limite,char* msj)
 }
 
 /**
-* \brief    Evalua si es un nombre valido
+* \brief   modifica un cliente recibiendo su ID
 * \param pBuffer Es la cadena que evaluamos
-* \param limite Es el tamano maximo del string
-* \return En caso de exito retorna 1, si no 0
+* \param len Es el tamano maximo del string
+* \return En caso de exito retorna 0, si no -1
 */
 
 int ModificarclientePorId(Clientes*list, int len,int id )
@@ -244,12 +241,13 @@ int ModificarclientePorId(Clientes*list, int len,int id )
                 }
                 case 2:
                                         fflush(stdin);
-                if (utn_getNombre( auxApellido,50, "\n Ingrese apellido: \n","\Apellido invalido!\n", 2) == 0)
+                if (utn_getNombre( auxApellido,50, "\n Ingrese apellido: \n","\n Apellido invalido!\n", 2) == 0)
                 {
                     strncpy(list[id].apellido, auxApellido, 51);
                     printf("Apellido modicado\n");
                             break;
                 }
+                break;
                 case 3:
                                         fflush(stdin);
                 if (utn_getLetrasYNumeros(auxCuit,20, "\n Ingrese Salario:\n")== 0)
@@ -274,7 +272,7 @@ int ModificarclientePorId(Clientes*list, int len,int id )
 return retorno;
 }
 /**
-* \brief    Evalua si es un nombre valido
+* \brief    Evalua si es un entero
 * \param pBuffer Es la cadena que evaluamos
 * \param limite Es el tamano maximo del string
 * \return En caso de exito retorna 1, si no 0
@@ -300,16 +298,16 @@ int isValidEntero(char *pBuffer, int limite)
     return retorno;
 }
 /**
-* \brief    Evalua si es un nombre valido
-* \param pBuffer Es la cadena que evaluamos
-* \param limite Es el tamano maximo del string
-* \return En caso de exito retorna 1, si no 0
+* \brief   menu de opciones
+* \param escanea la opcion ingresada
+* \return la opcion indicada por el usuario
 */
 
 int menu(int*opcion)
 {
     int aux;
-        system("clear");
+        //system("clear");
+        fflush(stdin);
         printf("1- Alta de cliente\n");
         printf("2- Modificar datos de cliente\n");
         printf("3- Baja Cliente\n");
@@ -325,10 +323,11 @@ int menu(int*opcion)
 }
 
 /**
-* \brief    Evalua si es un nombre valido
-* \param pBuffer Es la cadena que evaluamos
+* \brief    evalua el id ingresado y en caso de exito y de haber informacion en ese id
+*           borra la informacion
+* \param pArray Recibe el array ingresado
+* \param id es el numero a buscar
 * \param limite Es el tamano maximo del string
-* \return En caso de exito retorna 1, si no 0
 */
 
 
@@ -354,3 +353,17 @@ return retorno;
 
 
  }
+
+ /**
+* \brief    Se utiliza esta funcion para obtener un nuevo id
+*           declarando una variable static para el id y suma 1 al anterior
+* \return devuelve un id nuevo
+*/
+static int getNextId()
+{
+    static int ultimoId=-1;
+    ultimoId++;
+    return ultimoId;
+}
+
+

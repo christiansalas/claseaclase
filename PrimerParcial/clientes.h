@@ -31,6 +31,10 @@ int getString(char* pBuffer, int limite);
  int menu(int*opcion);
  int ModificarclientePorId(Clientes*list, int len,int id );
  int borrarCliente(Clientes* list, int len , int id);
+ static int getNextId();
+
+
+
 
 
 

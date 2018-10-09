@@ -30,3 +30,34 @@
 	"clientes.h"
 	"ventas.h"
 
+1539095903 source:c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+
+1539094480 c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\clientes.h
+
+1539095903 c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\ventas.h
+
+1539096028 source:c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\ventas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+
+1539092897 source:c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\clientes.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+
