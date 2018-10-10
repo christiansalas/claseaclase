@@ -61,3 +61,49 @@
 	"clientes.h"
 	"ventas.h"
 
+1539124006 source:/home/alumno/Documentos/claseaclase/PrimerParcial/clientes.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+	"informes.h"
+
+1539123812 /home/alumno/Documentos/claseaclase/PrimerParcial/clientes.h
+
+1539123697 /home/alumno/Documentos/claseaclase/PrimerParcial/ventas.h
+
+1539128434 source:/home/alumno/Documentos/claseaclase/PrimerParcial/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+	"informes.h"
+
+1539126453 source:/home/alumno/Documentos/claseaclase/PrimerParcial/ventas.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+	"informes.h"
+
+1539129671 source:/home/alumno/Documentos/claseaclase/PrimerParcial/informes.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+	"informes.h"
+
+1539130978 /home/alumno/Documentos/claseaclase/PrimerParcial/informes.h
+

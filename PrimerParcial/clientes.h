@@ -32,6 +32,11 @@ int getString(char* pBuffer, int limite);
  int ModificarclientePorId(Clientes*list, int len,int id );
  int borrarCliente(Clientes* list, int len , int id);
  static int getNextId();
+ int clientes_buscarIndiceVacio(Clientes* pBuffer,int limite,int*indice);
+ int pan_obtenerID();
+int clientes_ingresoForzado(Clientes* pBuffer,int limite,char* nombre,char*apellido,char* cuit);
+
+
 
 
 

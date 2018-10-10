@@ -18,12 +18,11 @@ int ModificarVentasPorId(Ventas* list, int len,int id );
 int inicializarVentas(Ventas* pBuffer,int limite);
 int  imprimirVentaDeCliente(Ventas *list,Clientes *listcliente, int lenventa ,int lenclientes,int id);
  int ImprimirClientes(Clientes *listClientes,int limiteClientes,Ventas * listVentas,int limiteVentas );
-/**
-* \brief    Se utiliza esta funcion para obtener un nuevo id
-*           declarando una variable static para el id y suma 1 al anterior
-* \return devuelve un id nuevo
-*/
+
+
 static int getNextId();
+static int ventas_buscarIndiceVacio(Ventas* pBuffer,int limite,int*indice);
+
 
 
 

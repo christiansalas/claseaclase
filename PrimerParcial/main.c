@@ -8,6 +8,7 @@
 #include "ventas.h"
 #define CANTIDAD_CLIENTES 100
 #define CANTIDAD_VENTAS 1000
+#include "informes.h"
 
 
 
@@ -17,16 +18,24 @@ int main()
 int opcion;
 int flag = 0 ;
 int i,auxiliarID,auxIdVenta;
+char auxZona[50];
 
 
 Clientes arrayClientes[CANTIDAD_CLIENTES];
 Ventas arrayVentas [CANTIDAD_VENTAS];
 
-
-
-
 inicializarCliente(arrayClientes, CANTIDAD_CLIENTES);
 inicializarVentas(arrayVentas,CANTIDAD_VENTAS);
+
+//clientes_ingresoForzado(arrayClientes,CANTIDAD_CLIENTES ,"Juan","Perez",20-30111568-5);
+//clientes_ingresoForzado(arrayClientes,CANTIDAD_CLIENTES ,"leandreo","Lopez",20-30878568-5);
+//clientes_ingresoForzado(arrayClientes,CANTIDAD_CLIENTES ,"Rocio","Oliva",20-30897568-5);
+//ventas_ingresoForzado(arrayVentas,CANTIDAD_VENTAS,1,"juanAfiche","CABA",1,"a_cobrar");
+
+
+
+
+
 
 do{
     menu(&opcion);
@@ -37,7 +46,6 @@ do{
                     {
                         printf("\n Cliente cargado Exitosamente!\n");
                         flag = 1;
-                            break;
                     }
                     break;
 
@@ -186,8 +194,20 @@ do{
                     break;
 
                 case 8:
-                printf("\nCerrando...\n");
+                if(utn_getNombre(&auxZona,50,"\n Ingrese zona \nCABA\nZONA_SUR \n ZONA_OESTE \n", "\n Error, ingrese una zona valida", 2)==0)
+                         {
+                            Informar_VentasOrdenadasPorZona(arrayVentas, CANTIDAD_VENTAS , auxZona);
+
+                         }
+
                 break;
+                }
+{
+
+
+                //informar_mostrarVentaPorEstado(arrayVentas, CANTIDAD_VENTAS);
+              //  printf("\nCerrando...\n");
+
             }
 
 

@@ -6,6 +6,8 @@
 #include <ctype.h>
 #include "clientes.h"
 #include "ventas.h"
+#include "informes.h"
+
 /* brief inicializa el array en 0 para verificar que esten vacios
 *
 */
@@ -364,6 +366,46 @@ static int getNextId()
     static int ultimoId=-1;
     ultimoId++;
     return ultimoId;
+}
+
+
+int clientes_ingresoForzado(Clientes* pBuffer,int limite,char* nombre,char*apellido,char* cuit)
+{
+    int aux;
+    clientes_buscarIndiceVacio(pBuffer,limite,&aux);
+    strcpy(pBuffer[aux].nombre,nombre);
+    strcpy(pBuffer[aux].cuit,cuit);
+    strcpy(pBuffer[aux].apellido,apellido);
+    pBuffer[aux].idClientes=pan_obtenerID();
+    pBuffer[aux].isEmpty=0;
+
+    return 0;
+}
+
+
+int clientes_buscarIndiceVacio(Clientes* pBuffer,int limite,int*indice)
+{
+    int i;
+    int retorno=-1;
+    for(i=0;i<limite;i++)
+    {
+        if(pBuffer[i].isEmpty==0)
+        {
+            *indice=i;
+            retorno=0;
+            break;
+        }
+    }
+    return retorno;
+}
+
+
+
+
+int pan_obtenerID()
+{
+    static int ID=0;
+    return ID++;
 }
 
 

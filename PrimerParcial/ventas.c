@@ -6,6 +6,8 @@
 #include <ctype.h>
 #include "clientes.h"
 #include "ventas.h"
+#include "informes.h"
+
 
 
 /**
@@ -305,4 +307,43 @@ static int getNextId()
     ultimoId++;
     return ultimoId;
 }
+
+
+/*int ventas_ingresoForzado(Ventas* pBuffer,int limite,int afiches,char* nombreAfiche,char* zonaPegarAfiche,char* estadoVenta)
+{
+    int aux;
+    ventas_buscarIndiceVacio(pBuffer,limite,&aux);
+    strcpy(pBuffer[aux].nombreAfiche,nombreAfiche);
+    strcpy(pBuffer[aux].zonaPegarAfiche,zonaPegarAfiche);
+    pBuffer[aux].afiches=afiches;
+    pBuffer[aux].IdCliente=IdCliente;
+    pBuffer[aux].isEmptyVentas=1;
+    pBuffer[aux].IdVentas=ventas_obtenerID();
+    return 0;
+}
+
+static int ventas_buscarIndiceVacio(Ventas* pBuffer,int limite,int*indice)
+{
+    int i;
+    int retorno=-1;
+    for(i=0;i<limite;i++){
+        if(pBuffer[i].isEmptyVentas==1)
+        {
+            *indice=i;
+            retorno=0;
+            break;
+        }
+    }
+    return retorno;
+}
+
+
+int ventas_obtenerID()
+{
+    static int ID=0;
+    return ID++;
+}*/
+
+
+
 
