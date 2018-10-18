@@ -34,7 +34,15 @@ int getString(char* pBuffer, int limite);
  static int getNextId();
  int clientes_buscarIndiceVacio(Clientes* pBuffer,int limite,int*indice);
  int pan_obtenerID();
-int clientes_ingresoForzado(Clientes* pBuffer,int limite,char* nombre,char*apellido,char* cuit);
+ int clientes_ingresoForzado(Clientes* listClientes, int lenClientes, char *nombre, char *apellido, char *cuit);
+
+
+static int getLugarLibre(Clientes* arrayClientes, int lenClientes);
+
+int cliente_mostrar(Clientes* pArray, int limite, int idCliente);
+int ComprobarClienteCargado(Clientes *listClientes, int limiteClientes);
+
+
 
 
 

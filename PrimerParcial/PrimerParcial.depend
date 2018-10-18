@@ -30,7 +30,7 @@
 	"clientes.h"
 	"ventas.h"
 
-1539095903 source:c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\main.c
+1539891153 source:c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -38,12 +38,13 @@
 	<ctype.h>
 	"clientes.h"
 	"ventas.h"
+	"informes.h"
 
-1539094480 c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\clientes.h
+1539874238 c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\clientes.h
 
-1539095903 c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\ventas.h
+1539889012 c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\ventas.h
 
-1539096028 source:c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\ventas.c
+1539889303 source:c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\ventas.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -51,8 +52,9 @@
 	<ctype.h>
 	"clientes.h"
 	"ventas.h"
+	"informes.h"
 
-1539092897 source:c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\clientes.c
+1539783434 source:c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\clientes.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -60,6 +62,7 @@
 	<ctype.h>
 	"clientes.h"
 	"ventas.h"
+	"informes.h"
 
 1539124006 source:/home/alumno/Documentos/claseaclase/PrimerParcial/clientes.c
 	<stdio.h>
@@ -106,4 +109,16 @@
 	"informes.h"
 
 1539130978 /home/alumno/Documentos/claseaclase/PrimerParcial/informes.h
+
+1539891099 c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\informes.h
+
+1539891899 source:c:\users\cris_\onedrive\desktop\gituno\claseaclase\primerparcial\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+	"clientes.h"
+	"ventas.h"
+	"informes.h"
 

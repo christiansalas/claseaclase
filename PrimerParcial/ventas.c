@@ -42,42 +42,30 @@ char auxZonaPegarAfiche[50];
 
 
   if(list != NULL && len > 0 )
+    {
+        for(i=0;i<len;i++)
             {
-                for(i=0;i<len;i++)
+                if(list[i].isEmptyVentas== 0 && utn_getEntero(&auxAfiches,50,"\n Ingrese cantidad de afiches \n","\n Error, ingrese una cantidad valida\n", 2)==0
+                &&
+                utn_getNombre(auxNombreAfiche,50,"\n Ingrese Nombre del afiche \n","\n Error,datos Invalidos\n", 2)==0
+                &&
+                utn_getNombre(auxZonaPegarAfiche,50,"\n Ingrese zona donde pegar el afiche \nCABA\nZona SUr \nZona Oeste \n", "\n Error, ingrese una zona valida", 2)==0
+                )
                 {
-                            if(list[i].isEmptyVentas== 0
-                                 &&
-                                 utn_getEntero(&auxAfiches,50,"\n Ingrese cantidad de afiches \n","\n Error, ingrese una cantidad valida\n", 2)==0
-                                 &&
-                                 utn_getNombre(auxNombreAfiche,50,"\n Ingrese Nombre del afiche \n","\n Error,datos Invalidos\n", 2)==0
-                                 &&
-                                 utn_getNombre(auxZonaPegarAfiche,50,"\n Ingrese zona donde pegar el afiche \nCABA\nZona SUr \nZona Oeste \n", "\n Error, ingrese una zona valida", 2)==0
-                               )
-                                    {
-                                        list[i].IdVentas = getNextId();
-                                        list[i].afiches = auxAfiches;
-                                        strncpy(list[i].nombreAfiche, auxNombreAfiche, 50);
-                                        strncpy(list[i]. zonaPegarAfiche, auxZonaPegarAfiche, 50);
-                                        list[i].isEmptyVentas =  1;
-                                        strncpy(list[i].estadoVenta,"a cobrar", 50);
-                                        list[i].IdCliente= id;
-                                        retorno = 0;
-                                        break;
+                    list[i].IdVentas = getNextId();
+                    list[i].afiches = auxAfiches;
+                    strncpy(list[i].nombreAfiche, auxNombreAfiche, 50);
+                    strncpy(list[i]. zonaPegarAfiche, auxZonaPegarAfiche, 50);
+                    list[i].isEmptyVentas =  1;
+                    strncpy(list[i].estadoVenta,"A_COBRAR", 50);
+                    list[i].IdCliente= id;
+                    retorno = 0;
+                    break;
 
-                                     }
-                }
-
+                 }
             }
-          /*  printf("Id de ventas :%d\n",list[i].IdVentas);
-            printf("Cantidad de afiches : %d \n",list[i].afiches);
-            printf("estado venta :%s\n",list[i].estadoVenta);
-            printf("NOmbre afiche: %s\n",list[i].nombreAfiche);
-            printf("ZOna afiche: %s\n",list[i].zonaPegarAfiche);*/
 
-
-
-
-
+    }
 return retorno;
 }
 
@@ -91,11 +79,8 @@ return retorno;
 * \return En caso de exito retorna 0, si no -1
 */
 
-
-
 int utn_getEntero(  int *pEntero, int limite, char *mensaje,
                     char *mensajeError, int reintentos)
-
 {
 
 
@@ -145,6 +130,7 @@ void imprimirVentas(Ventas * list,int limite)
             printf("estado venta :%s\n",list[i].estadoVenta);
             printf("NOmbre afiche: %s\n",list[i].nombreAfiche);
             printf("ZOna afiche: %s\n",list[i].zonaPegarAfiche);
+            printf("id cliente %d",list[i].IdCliente);
             printf("\n-----------------------------\n");
 
             }
@@ -219,84 +205,86 @@ int auxID;
 
             for(i=0;i<lenventa;i++)
             {
-                 if(list[i].IdVentas== id)
+             if(list[i].IdVentas== id)
                     //&& list[id].IdCliente== id)
-                        {
-
+                    {
                         auxID=list[i].IdVentas;
                         break;
-                        }
-            }
-                             for(j=0;j<lenclientes;j++)
-                                    {
-                                    if(listcliente[j].idClientes == auxID)
-                                        {
-                                        printf("\n Nombre : %s\n",listcliente[id].nombre)  ;
-                                        printf("\n Apellido : %s\n",listcliente[id].apellido)  ;
-                                        printf("\n cuit : %s",listcliente[id].cuit)  ;
-                                           break;
-                                        }
-                                    }
-
-
-
-                printf("\n Desea Cambiar el estado de la venta?? \n 1- Si \n 2-NO \n");
-                scanf("%d",&opcion);
-
-                if(opcion == 1)
-                    {
-                       strncpy(list[i].estadoVenta, "Cobrada",50) ;
-                       printf("\nSe modifico el estado de la venta!!\n");
-                       retorno = 0;
-                    }else
-                    {
-                    printf("\n NO se modificara ningun dato!! \n");
                     }
+            }
+                for(j=0;j<lenclientes;j++)
+                    {
+                        if(listcliente[j].idClientes == auxID)
+                            {
+                            printf("\n Nombre : %s\n",listcliente[id].nombre)  ;
+                            printf("\n Apellido : %s\n",listcliente[id].apellido)  ;
+                            printf("\n cuit : %s",listcliente[id].cuit)  ;
+                               break;
+                            }
+                    }
+                        printf("\n Desea Cambiar el estado de la venta?? \n 1- Si \n 2-NO \n");
+                        scanf("%d",&opcion);
+                        if(opcion == 1 )
+                            {
+                              strncpy(list[auxID].estadoVenta,"Cobrada",50) ;
+                               printf("\nSe modifico el estado de la venta!!\n");
+                               retorno = 0;
+                            }else
+                                {
+                                    printf("\n NO se modificara ningun dato!! \n");
+                                }
 
-                retorno = 0;
+                                    retorno = 0;
         }
 
 return  retorno;
 }
 
 
- int ImprimirClientes(Clientes *listClientes,int limiteClientes,Ventas * listVentas,int limiteVentas )
+ int ImprimirClientes(Clientes *listClientes,int limiteClientes,Ventas *listVentas,int limiteVentas )
  {
-     int retorno = 0;
+    int retorno = -1;
      int i,j;
      int contadorEstados =0;
-     for (i=0;i< limiteClientes;i++)
-     {
-            if( listClientes[i].isEmpty == 1)
-            {
-                printf("\n ID : %d \n",listClientes[i].idClientes);
-                printf("\n Nombre : %s \n",listClientes[i].nombre);
-                printf("\n apellido : %s \n",listClientes[i].apellido);
-                printf("\n Cuit : %s \n",listClientes[i].cuit);
-                retorno =0;
-                break;
+     int auxIdCliente;
 
-            }
+     if(listClientes != NULL && limiteClientes>0 && listVentas !=  NULL && limiteVentas > 0)
+     {
+            for (i=0;i< limiteClientes;i++)
+                {
+                    if( listClientes[i].isEmpty == 1)
+                        {
+                            contadorEstados = 0;
+                        for(j=0;j<limiteVentas;j++)
+                            {
+
+                        if(listVentas[j].isEmptyVentas == 1 && listVentas[j].IdCliente == listClientes[i].idClientes && strcmp(listVentas[j].estadoVenta,"A_COBRAR")== 0)
+                                {
+                                contadorEstados++;
+
+                                }
+                            }
+                            printf("\n ID : %d \n",listClientes[i].idClientes);
+                            printf("\n Nombre : %s \n",listClientes[i].nombre);
+                            printf("\n apellido : %s \n",listClientes[i].apellido);
+                            printf("\n Cuit : %s \n",listClientes[i].cuit);
+                            printf("\nCantidad ventas a cobrar: %d\n", contadorEstados);
+                            printf("\n---------------------\n");
+
+                        }
+                }
+                retorno = 0;
         }
 
-         for(j=0;j<limiteVentas;j++)
-         {
-            if(listVentas[j].isEmptyVentas == 1 && listVentas[j].IdCliente == listClientes[i].idClientes && strcmp(listVentas[j].estadoVenta,"a cobrar")== 0)
-            {
-
-                contadorEstados ++;
-                retorno=0;
-
-            }
-         }
-         printf("\nLa cantidad de ventas a cobrar son : %d\n",contadorEstados);
-         printf("\n---------------------\n");
+    return retorno;
 
 
-return retorno;
+}
 
- }
- /**
+
+
+
+/**
 * \brief    Se utiliza esta funcion para obtener un nuevo id
 *           declarando una variable static para el id y suma 1 al anterior
 * \return devuelve un id nuevo
@@ -308,19 +296,12 @@ static int getNextId()
     return ultimoId;
 }
 
-
-/*int ventas_ingresoForzado(Ventas* pBuffer,int limite,int afiches,char* nombreAfiche,char* zonaPegarAfiche,char* estadoVenta)
-{
-    int aux;
-    ventas_buscarIndiceVacio(pBuffer,limite,&aux);
-    strcpy(pBuffer[aux].nombreAfiche,nombreAfiche);
-    strcpy(pBuffer[aux].zonaPegarAfiche,zonaPegarAfiche);
-    pBuffer[aux].afiches=afiches;
-    pBuffer[aux].IdCliente=IdCliente;
-    pBuffer[aux].isEmptyVentas=1;
-    pBuffer[aux].IdVentas=ventas_obtenerID();
-    return 0;
-}
+/**
+* \brief    Se utiliza esta funcion para buscar un indice vacio en el array de ventas
+* \param pbuffer es el array a recorrer
+* \param limite Es el limite de ventas que puede guardar el array
+* \return retorna 0 si devuelve un indice, de lo contrario retorna -1
+*/
 
 static int ventas_buscarIndiceVacio(Ventas* pBuffer,int limite,int*indice)
 {
@@ -342,7 +323,127 @@ int ventas_obtenerID()
 {
     static int ID=0;
     return ID++;
-}*/
+}
+
+
+/**
+* \brief    Se utiliza esta funcion para cargar todos los datos de una venta
+* \param arrayVentas Es el array que se recorre
+* \param lenVentas Es el limite de ventas que puede guardar el array
+* \return El retorno es 0 si se mostraron los datos, si no el retorno es -1.
+*/
+int ventas_ingresoForzado(Ventas* listVentas, int lenVentas,int idCliente, int afiches, char *nombreAfiche, char* zonaPegarAfiche, char* estadoVenta)
+{
+    int retorno = -1;
+    int indice;
+    indice = getLugarLibreVenta(listVentas,lenVentas);
+    if( listVentas != NULL && lenVentas > 0 && idCliente >= 0 && afiches >= 0 && nombreAfiche != NULL &&
+        zonaPegarAfiche != NULL && zonaPegarAfiche != NULL && estadoVenta != NULL && estadoVenta != NULL)
+    {
+        listVentas[indice].IdCliente = idCliente;
+        listVentas[indice].afiches = afiches;
+        strncpy(listVentas[indice].nombreAfiche, nombreAfiche, 50);
+        strncpy(listVentas[indice].zonaPegarAfiche, zonaPegarAfiche, 50);
+        strncpy(listVentas[indice].estadoVenta, estadoVenta, 50);
+        listVentas[indice].IdVentas = getNextId();
+        listVentas[indice].isEmptyVentas= 1;
+        retorno = 0;
+    }
+    return retorno;
+}
+
+/**
+* \brief    Se utiliza esta funcion para obtener el primer lugar libre de un array de tipo venta
+*           recorriendo el array hasta encontrar un isEmpty en 1
+* \param arrayVentas Es el array que se recorre
+* \param lenVentas Es el limite de ventas que puede guardar el array
+* \return devuelve el indice de la posicion libre, sino el return es -1.
+*/
+static int getLugarLibreVenta(Ventas* arrayVentas, int lenVentas)
+{
+    int retorno = -1;
+    int i;
+    if(arrayVentas != NULL && lenVentas > 0)
+    {
+        for(i=0;i<lenVentas;i++)
+        {
+            if(arrayVentas[i].isEmptyVentas== 0)
+            {
+                retorno = i;
+                break;
+            }
+        }
+    }
+    return retorno;
+}
+
+/**
+* \brief    Se utiliza esta funcion para encontrar un venta a través de un id de cliente,
+*           recorriendo el array y comparando los id (donde el isEmpty es 0)
+* \param arrayVentas Es el array que se recorre
+* \param lenVentas Es el limite de ventas que puede guardar el array
+* \param idCliente Es el id con que se compara cada idCliente del array
+* \return   retorna la direccion de la struct del venta donde se encontro el id,
+*           si no el retorno es 0
+*/
+venta_getByIdCliente(Ventas *arrayVentas, int lenVentas, int IdCliente)
+{
+   int  retorno = 0;
+    int i;
+    if(arrayVentas != NULL && lenVentas > 0)
+    {
+        for(i=0;i<lenVentas;i++)
+        {
+            if(arrayVentas[i].isEmptyVentas== 1 && arrayVentas[i].IdCliente == IdCliente)
+            {
+                retorno = &arrayVentas[i];
+                break;
+            }
+        }
+    }
+    return retorno;
+}
+
+int venta_imprimir(Ventas* arrayVentas, int lenVentas)
+{
+    int retorno = -1;
+    int i;
+    if(arrayVentas = NULL && lenVentas > 0)
+    {
+        for(i=0;i<lenVentas;i++)
+        {
+            if(arrayVentas[i].isEmptyVentas==1)
+            {
+                printf("\nIdcliente: %d\nAfiches: %d\nImagen: %s\nIDVenta: %d\n",
+                arrayVentas[i].IdCliente, arrayVentas[i].afiches,
+                arrayVentas[i].nombreAfiche, arrayVentas[i].IdVentas);
+                if(strcmp(arrayVentas[i].zonaPegarAfiche,"CABA")==0)
+                {
+                    printf("Zona: CABA\n");
+                }
+                else if(strcmp(arrayVentas[i].zonaPegarAfiche,"ZONA_SUR")==0)
+                {
+                    printf("Zona: Zona Sur\n");
+                }
+                else if(strcmp(arrayVentas[i].zonaPegarAfiche,"ZONA_OESTE")==0)
+                {
+                    printf("Zona: Zona Oeste\n");
+                }
+                if(strcmp(arrayVentas[i].estadoVenta, "A_COBRAR")==0)
+                {
+                    printf("Estado: A cobrar\n\n");
+                }
+                else if(strcmp(arrayVentas[i].estadoVenta, "Cobrada")==0)
+                {
+                    printf("Estado: Cobrado\n\n");
+                }
+            }
+        }
+        retorno = 0;
+    }
+    return retorno;
+}
+
 
 
 

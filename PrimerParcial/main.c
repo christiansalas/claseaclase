@@ -12,13 +12,11 @@
 
 
 
-
 int main()
 {
 int opcion;
-int flag = 0 ;
-int i,auxiliarID,auxIdVenta;
-char auxZona[50];
+
+int auxiliarID,auxIdVenta;
 
 
 Clientes arrayClientes[CANTIDAD_CLIENTES];
@@ -27,191 +25,230 @@ Ventas arrayVentas [CANTIDAD_VENTAS];
 inicializarCliente(arrayClientes, CANTIDAD_CLIENTES);
 inicializarVentas(arrayVentas,CANTIDAD_VENTAS);
 
-//clientes_ingresoForzado(arrayClientes,CANTIDAD_CLIENTES ,"Juan","Perez",20-30111568-5);
-//clientes_ingresoForzado(arrayClientes,CANTIDAD_CLIENTES ,"leandreo","Lopez",20-30878568-5);
-//clientes_ingresoForzado(arrayClientes,CANTIDAD_CLIENTES ,"Rocio","Oliva",20-30897568-5);
-//ventas_ingresoForzado(arrayVentas,CANTIDAD_VENTAS,1,"juanAfiche","CABA",1,"a_cobrar");
+clientes_ingresoForzado(arrayClientes,CANTIDAD_CLIENTES,"cristian","salas","20-32111568-4");
+clientes_ingresoForzado(arrayClientes,CANTIDAD_CLIENTES,"Lucas","Hourcade","20-29556888-4");
+clientes_ingresoForzado(arrayClientes,CANTIDAD_CLIENTES,"Carolina","Hourcade","20-31477895-4");
+
+ventas_ingresoForzado(arrayVentas, CANTIDAD_VENTAS, 0, 40, "imagen.jpg1", "ZONA_OESTE","Cobrada");
+ventas_ingresoForzado(arrayVentas, CANTIDAD_VENTAS, 0, 500, "imagen.jpg2", "CABA","A_COBRAR");
+ventas_ingresoForzado(arrayVentas, CANTIDAD_VENTAS, 0, 400, "imagen.jpg3", "ZONA_SUR","A_COBRAR");
+
+ventas_ingresoForzado(arrayVentas, CANTIDAD_VENTAS, 1, 80, "imagen.jpg4", "ZONA_OESTE","Cobrada");
+ventas_ingresoForzado(arrayVentas, CANTIDAD_VENTAS, 1, 40, "imagen.jpg5", "ZONA_OESTE","Cobrada");
+ventas_ingresoForzado(arrayVentas, CANTIDAD_VENTAS, 1, 40, "imagen.jpg6", "ZONA_OESTE","A_COBRAR");
+
+ventas_ingresoForzado(arrayVentas, CANTIDAD_VENTAS, 2, 100, "imagen.jpg7", "ZONA_SUR","Cobrada");
+ventas_ingresoForzado(arrayVentas, CANTIDAD_VENTAS, 2, 50, "imagen.jpg8", "ZONA_OESTE","A_COBRAR");
+ventas_ingresoForzado(arrayVentas, CANTIDAD_VENTAS, 2, 500, "imagen.jpg9", "CABA","A_COBRAR");
 
 
 
 
 
 
-do{
-    menu(&opcion);
-    switch (opcion)
-        {
-            case 1:
-                if (altaCliente(arrayClientes,CANTIDAD_CLIENTES)== 0)
+                do
                     {
-                        printf("\n Cliente cargado Exitosamente!\n");
-                        flag = 1;
-                    }
-                    break;
-
-            case 2:
-                 for (i=0;i<CANTIDAD_CLIENTES; i++)
-                    {
-                       if( arrayClientes[i].isEmpty == 1 )
-                           {
-                               flag =1;
-                               break;
-                           }
-                    }
-                        if(flag == 0)
-                           {
-                                printf("\n Error, no hay clientes cargados!!\n");
-                                break;
-                           }
-                        fflush(stdin);
-
-                        if ( flag == 1 && utn_getEntero(&auxiliarID, CANTIDAD_CLIENTES, "Ingrese id\n","No es un id valido \n", 3) == 0 &&
-                                ModificarclientePorId( arrayClientes, CANTIDAD_CLIENTES, auxiliarID) == 0)
-                            {
-                                printf("Empleado Modificado\n");
-                                flag = 0;
-                                break;
-                            }
-                            break;
-                case 3:
-
-                 for (i=0;i<CANTIDAD_CLIENTES; i++)
-                        {
-                           if( arrayClientes[i].isEmpty == 1 )
-                               {
-                                   flag =1;
-                                   break;
-                               }
-                        }
-                        if(flag == 0)
-                           {
-                                printf("\n Error, no hay clientes cargados!!\n");
-                                break;
-                           }
-                if( flag == 1 && utn_getEntero(&auxiliarID,CANTIDAD_CLIENTES,"\n Ingrese ID:\n","\n Error ingrese solo numeros \n",2)==0
-                    && borrarCliente(arrayClientes,CANTIDAD_CLIENTES,auxiliarID)==0)
-                            {
-
-                                    printf("\n Cliente Borrado con exito!! \n");
-                                    flag = 0;
-                                      break;
-                            }
-                            break;
-
-                case 4:
-                for (i=0;i<CANTIDAD_CLIENTES; i++)
-                        {
-                           if( arrayClientes[i].isEmpty == 1 )
-                               {
-                                   flag =1;
-                                   break;
-                               }
-                        }
-                        if(flag == 0)
-                           {
-                                printf("\n Error, no hay clientes cargados!!\n");
-                                break;
-                           }
-                        if  ( utn_getEntero(&auxiliarID,CANTIDAD_CLIENTES,"Ingrese id \n","Error, reingrese \n",2)==0 &&
-                           arrayClientes[auxiliarID].isEmpty== 1 && altaVenta(arrayVentas,CANTIDAD_VENTAS,auxiliarID)==0)
+                        menu(&opcion);
+                            switch (opcion)
                                 {
-                                    printf("la venta se ah completa con exito!!\n");
+                                    case 1:
+                                        if (altaCliente(arrayClientes,CANTIDAD_CLIENTES)== 0)
+                                        {
+                                            printf("\n Cliente cargado Exitosamente!\n");
+                                        }
+                                        break;
+
+                                    case 2:
+                                           fflush(stdin);
+
+                                        if ( ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)== 1&& utn_getEntero(&auxiliarID, CANTIDAD_CLIENTES, "Ingrese id\n","No es un id valido \n", 3) == 0 &&
+                                            ModificarclientePorId( arrayClientes, CANTIDAD_CLIENTES, auxiliarID) == 0)
+                                            {
+                                                printf("Empleado Modificado\n");
+                                                break;
+                                            }
+                                            break;
+                                    case 3:
+
+
+                                            if( ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)== 1 && utn_getEntero(&auxiliarID,CANTIDAD_CLIENTES,"\n Ingrese ID:\n","\n Error ingrese solo numeros \n",2)==0
+                                            && borrarCliente(arrayClientes,CANTIDAD_CLIENTES,auxiliarID)==0)
+                                                {
+
+                                                    printf("\n Cliente Borrado con exito!! \n");
+                                                    break;
+                                                }
+
+                                                break;
+
+                                    case 4:
+                                        if  ( ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)== 1)
+                                        {
+                                       if(utn_getEntero(&auxiliarID,CANTIDAD_CLIENTES,"Ingrese id \n","Error, reingrese \n",2)==0 &&
+                                            arrayClientes[auxiliarID].isEmpty== 1 && altaVenta(arrayVentas,CANTIDAD_VENTAS,auxiliarID)==0)
+                                                {
+                                                    printf("la venta se ah completa con exito!!\n");
+                                                    break;
+                                                }
+                                                else
+                                                    {
+                                                        printf("\n El id Ingresado no Existe!! \n");
+                                                    }
+                                                break;
+                                        }
+                                          break;
+
+                                    case 5:
+
+                                          if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                          {
+                                                //imprimirVentas(arrayVentas,CANTIDAD_VENTAS);
+                                                imprimirVentas(arrayVentas,CANTIDAD_VENTAS);
+
+
+                                                if ( utn_getEntero(&auxiliarID, CANTIDAD_CLIENTES, "Ingrese id\n","No es un id valido \n", 3) == 0 &&
+                                                    ModificarVentasPorId(arrayVentas,CANTIDAD_VENTAS,auxiliarID) == 0)
+                                                    {
+                                                        printf("se modifico correctamente\n");
+                                                        break;
+                                                    }
+                                            }
+                                                    break;
+
+                                    case 6:
+
+                                            if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                            {
+                                                imprimirVentas(arrayVentas,CANTIDAD_VENTAS);
+
+                                                if(utn_getEntero(&auxIdVenta,CANTIDAD_VENTAS,"\n Ingrese Id de VEnta \n","\nError Ingrese un Id Valido \n",2)== 0
+                                                    &&
+                                                        imprimirVentaDeCliente(arrayVentas,arrayClientes,CANTIDAD_VENTAS,CANTIDAD_CLIENTES,auxIdVenta)== 0)
+                                                    {
+                                                        printf("\n se Cambio el estado de la venta!!");
+                                                        break;
+                                                    }
+                                            }
+                                                break;
+                                    case 7:
+                                            if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                            {
+                                                    ImprimirClientes(arrayClientes,CANTIDAD_CLIENTES,arrayVentas,CANTIDAD_VENTAS );
+                                                    break;
+                                            }
+                                                    break;
+
+                                    case 8:
+                                if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                    {
+
+                                        informes_ImprimirClientesMenosVentasaCobrar(arrayClientes,CANTIDAD_CLIENTES,arrayVentas,CANTIDAD_VENTAS );
+                                             break;
+                                    }
+
                                     break;
-                                }
-                            else
-                                {
-                                    printf("\n El id Ingresado no Existe!! \n");
-                                }
-                          break;
-
-                case 5:
-
-                 for (i=0;i<CANTIDAD_CLIENTES; i++)
-                        {
-                            if( arrayClientes[i].isEmpty == 1 )
-                               {
-                                   flag =1;
-                                   break;
-                               }
-                        }
-                        if(flag == 0)
-                           {
-                                printf("\n Error, no hay clientes cargados!!\n");
-                                break;
-                           }
-
-                         imprimirVentas(arrayVentas,CANTIDAD_VENTAS);
-                              if ( flag == 1 && utn_getEntero(&auxiliarID, CANTIDAD_CLIENTES, "Ingrese id\n","No es un id valido \n", 3) == 0 &&
-                                ModificarVentasPorId(arrayVentas,CANTIDAD_VENTAS,auxiliarID) == 0)
-                                    {
-                                        printf("se modifico correctamente\n");
-                                        flag = 0;
+                                    case 9:
+                                         if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                            {
+                                                informes_ImprimirClientesMenosVentasCobradas(arrayClientes,CANTIDAD_CLIENTES,arrayVentas,CANTIDAD_VENTAS );
+                                                 break;
+                                            }
                                         break;
-                                    }
-                    break;
 
-                case 6:
+                                    case 10:
+                                           if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                            {
+                                               if(   informes_ImprimirClientesMenosVentas(arrayClientes,CANTIDAD_CLIENTES,arrayVentas,CANTIDAD_VENTAS)!=0)
+                                               {
+                                                printf("\n No se puedo relizar la operacion!! \n");
+                                                break;
+                                               }
+                                            }
 
-                 for (i=0;i<CANTIDAD_CLIENTES; i++)
-                        {
-                           if( arrayClientes[i].isEmpty == 1 )
-                               {
-                                   flag =1;
-                                   break;
-                               }
-                        }
-                        if(flag == 0)
-                           {
-                                printf("\n Error, no hay clientes cargados!!\n");
-                                break;
-                           }
-                              imprimirVentas(arrayVentas,CANTIDAD_VENTAS);
+                                                break;
+                                    case 11:
 
-                           if(utn_getEntero(&auxIdVenta,CANTIDAD_VENTAS,"\n Ingrese Id de VEnta \n","\nError Ingrese un Id Valido \n",2)== 0 &&
-
-                                imprimirVentaDeCliente(arrayVentas,arrayClientes,CANTIDAD_VENTAS,CANTIDAD_CLIENTES,auxIdVenta)== 0)
-                                    {
-                                        printf("\n se Cambio el estado de la venta!!");
+                                           if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                            {
+                                             if(informes_ZonaMasAfichesVendidos(arrayVentas,CANTIDAD_VENTAS, arrayClientes,CANTIDAD_CLIENTES)!=0)
+                                                {
+                                                    printf("\n No se puedo relizar la operacion!! \n");
+                                                    break;
+                                                }
+                                            }
                                         break;
-                                    }
-                                break;
 
-                case 7:
-                    for (i=0;i<CANTIDAD_CLIENTES; i++)
-                        {
-                           if( arrayClientes[i].isEmpty == 1 )
-                               {
-                                   flag =1;
-                                   break;
-                               }
-                        }
-                        if(flag == 0)
-                           {
-                                printf("\n Error, no hay clientes cargados!!\n");
-                                break;
-                           }
-                            ImprimirClientes(arrayClientes,CANTIDAD_CLIENTES,arrayVentas,CANTIDAD_VENTAS );
-                    break;
+                                    case 12:
+                                            if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                            {
+                                           if(informar_clienteConMenosAfiches(arrayVentas,  CANTIDAD_VENTAS, arrayClientes, CANTIDAD_CLIENTES)!=0)
+                                               {
+                                                printf("\n No se puedo relizar la operacion!! \n");
+                                                  break;
+                                               }
+                                            }
+                                        break;
+                                    case 13:
+                                            if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                            {
 
-                case 8:
-                if(utn_getNombre(&auxZona,50,"\n Ingrese zona \nCABA\nZONA_SUR \n ZONA_OESTE \n", "\n Error, ingrese una zona valida", 2)==0)
-                         {
-                            Informar_VentasOrdenadasPorZona(arrayVentas, CANTIDAD_VENTAS , auxZona);
-
-                         }
-
-                break;
-                }
-{
-
-
-                //informar_mostrarVentaPorEstado(arrayVentas, CANTIDAD_VENTAS);
-              //  printf("\nCerrando...\n");
-
-            }
+                                            if(informes_clientesMasAfichesACobrar(arrayVentas, CANTIDAD_VENTAS,arrayClientes, CANTIDAD_CLIENTES)!=0)
+                                                {
+                                                    printf("\n No se puedo relizar la operacion!! \n");
+                                                    break;
+                                                }
+                                            }
+                                            break;
+                                    case 14:
+                                         if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                            {
+                                              if  (informes_clientesMasQuinientosAfiches(arrayVentas,CANTIDAD_VENTAS,arrayClientes,CANTIDAD_CLIENTES)!=0)
+                                              {
+                                                  printf("\n No se puedo relizar la operacion!! \n");
+                                                break;
+                                              }
 
 
-}while(opcion!=12);
+                                            }
+                                                break;
+                                    case 15:
+                                         if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                         {
+                                            if(informes_afichesVendidosPorZona(arrayVentas,CANTIDAD_VENTAS)!= 0)
+                                            {
+                                                  printf("\n No se puedo relizar la operacion!! \n");
+                                                break;
+                                            }
+
+                                               break;
+                                            }
+                                        break;
+                                    case 16:
+                                          if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                            {
+                                                if(informes_cantidadAfichesVendidosPromedio(arrayVentas,CANTIDAD_VENTAS,arrayClientes,CANTIDAD_CLIENTES)!=0)
+                                                {
+                                                    printf("\n No se puedo relizar la operacion!! \n");
+                                                }
+                                                  break;
+                                            }
+                                                break;
+                                    case 17:
+                                         if(ComprobarClienteCargado(arrayClientes,CANTIDAD_CLIENTES)==1)
+                                            {
+                                                printf("Entro");
+                                                informes_listarVentasOrdenadasPorZona(arrayVentas,CANTIDAD_VENTAS);
+                                            }
+                                                break;
+                                        case 18:
+
+                                        printf("\nCerrando...\n");
+                                        break;
+
+                                }
+
+
+                        }while(opcion!=20);
 
 
 

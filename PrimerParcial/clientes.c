@@ -8,7 +8,7 @@
 #include "ventas.h"
 #include "informes.h"
 
-/* brief inicializa el array en 0 para verificar que esten vacios
+/** brief inicializa el array en 0 para verificar que esten vacios
 *
 */
 
@@ -310,13 +310,29 @@ int menu(int*opcion)
     int aux;
         //system("clear");
         fflush(stdin);
-        printf("1- Alta de cliente\n");
+        printf("\n");
         printf("2- Modificar datos de cliente\n");
+        printf("1- Alta de cliente\n");
         printf("3- Baja Cliente\n");
         printf("4-Vender Afiches\n");
         printf("5- Editar Venta\n");
         printf("6- Cobrar Venta \n");
         printf("7- Imprimir Clientes\n");
+        printf("8- Imprimir Clientes con menos ventas a cobrar \n");
+        printf("9- Imprimir Clientes con menos ventas cobradas \n");
+        printf("10- Imprimir Clientes con menos ventas \n");
+        printf("11- Imprimir Zona mas afiches Vendidos\n");
+        printf("12- Imprimir CLiente con menos afiches comprados\n");
+        printf("13- Imprimir Clientes con mas afiches a cobrar\n");
+        printf("14- Imprimir Clientes que compraron mas de 500 afiches\n");
+        printf("15- Imprimir Cantidad de afiches vendidos por zona\n");
+        printf("16- Imprimir Cantidad de afiches vendidos promedio por cliente :\n");
+        printf("17- Listar ventas ordenadas por zona\n");
+        printf("18- Salir\n");
+
+
+
+
         printf("9-Salir\n");
 
         utn_getEntero(&aux,10,"\nIngrese una opcion: ","\nError Ingrese Una Opcion Valida",1,12);
@@ -369,18 +385,6 @@ static int getNextId()
 }
 
 
-int clientes_ingresoForzado(Clientes* pBuffer,int limite,char* nombre,char*apellido,char* cuit)
-{
-    int aux;
-    clientes_buscarIndiceVacio(pBuffer,limite,&aux);
-    strcpy(pBuffer[aux].nombre,nombre);
-    strcpy(pBuffer[aux].cuit,cuit);
-    strcpy(pBuffer[aux].apellido,apellido);
-    pBuffer[aux].idClientes=pan_obtenerID();
-    pBuffer[aux].isEmpty=0;
-
-    return 0;
-}
 
 
 int clientes_buscarIndiceVacio(Clientes* pBuffer,int limite,int*indice)
@@ -408,4 +412,97 @@ int pan_obtenerID()
     return ID++;
 }
 
+int clientes_ingresoForzado(Clientes* listClientes, int lenClientes, char *nombre, char *apellido, char *cuit)
+{
+    int retorno = -1;
+    int indice;
+    indice = getLugarLibre(listClientes,lenClientes);
+    if( listClientes != NULL && lenClientes > 0 )
+    {
+        strncpy(listClientes[indice].nombre, nombre, 51);
+        strncpy(listClientes[indice].apellido, apellido, 51);
+        strncpy(listClientes[indice].cuit, cuit, 20);
+        listClientes[indice].idClientes = getNextId();
+        listClientes[indice].isEmpty = 1;
+        retorno = 0;
+    }
+    return retorno;
+}
+
+
+/**
+* \brief    Se utiliza esta funcion para obtener el primer lugar libre de un array de tipo cliente
+*           recorriendo el array hasta encontrar un isEmpty en 1
+* \param arrayClientes Es el array que se recorre
+* \param lenClientes Es el limite de clientes que puede guardar el array
+* \return devuelve el indice de la posicion libre, sino el return es -1.
+*/
+static int getLugarLibre(Clientes* arrayClientes, int lenClientes)
+{
+    int retorno = -1;
+    int i;
+    if(arrayClientes != NULL && lenClientes > 0)
+    {
+        for(i=0;i<lenClientes;i++)
+        {
+            if(arrayClientes[i].isEmpty== 0)
+            {
+                retorno = i;
+                break;
+            }
+        }
+    }
+    return retorno;
+}
+
+
+/**
+* \brief    Se utiliza esta funcion para mostrar todos los datos de los
+*           clientes del array
+* \param arrayClientes Es el array que se recorre
+* \param lenClientes Es el limite de clientes que puede guardar el array
+* \return El retorno es 0 si se mostraron los datos, si no el retorno es -1.
+*/
+int cliente_mostrar(Clientes* pArray, int limite, int idCliente)
+{
+    int retorno = -1;
+    int i;
+    if(pArray != NULL && limite > 0 && idCliente >= 0)
+    {
+        for(i=0;i<limite;i++)
+        {
+            if(pArray[i].isEmpty == 1 && pArray[i].idClientes == idCliente)
+            {
+                printf("ID: %d\nNombre: %s\nApellido: %s\nCuit: %s\n",
+                pArray[i].idClientes,pArray[i].nombre, pArray[i].apellido,
+                pArray[i].cuit );
+            }
+        }
+        retorno = 0;
+    }
+    return retorno;
+}
+
+
+int ComprobarClienteCargado(Clientes *listClientes, int limiteClientes)
+{
+
+    int i;
+    int retorno =-1;
+
+    for (i=0;i<limiteClientes; i++)
+    {
+        if( listClientes[i].isEmpty == 1 )
+            {
+            retorno = 1;
+            break;
+            }
+        else
+            {
+            printf("\n Error, no hay clientes cargados!!\n");
+            break;
+            }
+    }
+      return retorno;
+}
 
