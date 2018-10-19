@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1539902163 source:/home/alumno/Documentos/programacion_1/clasePunteros/clase17.c
+
+1539907561 source:/home/alumno/Documentos/programacion_1/clasePunteros/clientes.c
+	<stdio.h>
+	<stdlib.h>
+	"clientes.h"
+	<string.h>
+	<ctype.h>
+	<stdio_ext.h>
+
+1539911259 /home/alumno/Documentos/programacion_1/clasePunteros/clientes.h
+
+1539909547 source:/home/alumno/Documentos/programacion_1/clasePunteros/main.c
+	<stdio.h>
+	<stdlib.h>
+	"clientes.h"
+	<string.h>
+	<ctype.h>
+	<stdio_ext.h>
+
