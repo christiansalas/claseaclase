@@ -2,14 +2,7 @@
 #include <stdlib.h>
 #include "cliente.h"
 
-void mostrar(Cliente* arrayPunterosCliente[], int cantidad)
-{
-    int i;
-    for(i=0; i<cantidad; i++)
-    {
-        printf("\nApellido: %s" ,arrayPunterosCliente[i]->apellido);
-    }
-}
+
 
 int main()
 {

@@ -12,3 +12,16 @@
 
 1540342036 /home/profesor/Descargas/clase_Archivos/cliente.h
 
+1540421771 source:c:\users\cris_\onedrive\documentos\git hub\claseaclase\archivos\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1540421771 c:\users\cris_\onedrive\documentos\git hub\claseaclase\archivos\cliente.h
+
+1540421771 source:c:\users\cris_\onedrive\documentos\git hub\claseaclase\archivos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"cliente.h"
+

@@ -126,3 +126,11 @@ int cliente_getIsEmpty(Cliente* this,int* isEmpty)
     return retorno;
 }
 
+void mostrar(Cliente* listClientes[], int cantidad)
+{
+    int i;
+    for(i=0; i<cantidad; i++)
+    {
+        printf("\nApellido: %s" ,listClientes[i]->apellido);
+    }
+}

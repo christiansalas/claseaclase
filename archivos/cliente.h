@@ -22,4 +22,6 @@ int cliente_getApellido(Cliente* this,char* apellido);
 
 int cliente_setIsEmpty(Cliente* this,int isEmpty);
 int cliente_getIsEmpty(Cliente* this,int* isEmpty);
+void mostrar(Cliente* listClientes[], int cantidad);
+
 
