@@ -4,6 +4,8 @@
 #include <string.h>
 #include <ctype.h>
 #include "utn.h"
+#include "LinkedList.h"
+
 
 /*int getString(char* pBuffer,int limite){
     char bufferString[4096];
@@ -196,22 +198,31 @@ int utn_getString(char* pBuffer, int limite)
 */
 int utn_getEntero(  int *pEntero, int limite, char *mensaje,char *mensajeError, int reintentos)
 {
+fflush(stdin);
     int retorno=-1;
     char bufferEntero[4096];
+    fflush(stdin);
+
     if( pEntero != NULL && limite > 0 && mensaje != NULL &&
         mensajeError != NULL && reintentos>=0)
     {
         do
         {
             reintentos--;
+            fflush(stdin);
+
             printf("\n%s", mensaje);
+            fflush(stdin);
+
             if( utn_getString(bufferEntero, limite) == 0 &&
                 isValidEntero(bufferEntero, limite))
             {
+
                 *pEntero = atoi(bufferEntero);
                 retorno = 0;
                 break;
             }
+
             else
             {
                 printf("\n%s", mensajeError);

@@ -19,7 +19,11 @@ cc     4. Modificar datos de empleado
     10. Salir
 *****************************************************/
 
+/***
+poner todo el menu en Init COntroler.
+las funciones principales deben estar dentro del controler
 
+****/
 int main()
 {
     int opcionMenu;
@@ -29,7 +33,7 @@ int main()
 
 
 do{
-    printf("\Ingrese una Opcion: \n");
+    printf("\n Ingrese una Opcion: \n");
     printf("\n1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).");
     printf("\n2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).");
     printf("\n3. Alta de empleado ");
@@ -46,12 +50,14 @@ do{
         {
             case 1:
             printf("\nSize de la lista %d", ll_len(listaEmpleados));
-                controller_loadFromText("data.csv",listaEmpleados);
+            controller_loadFromText("data.csv",listaEmpleados);
             printf("\nSize de la lista %d\n", ll_len(listaEmpleados));
             controller_ListEmployee(listaEmpleados);
             break;
 
             case 2:
+             parser_EmployeeFromBinary("data.bin" , listaEmpleados);
+
                 break;
             case 3:
                 if(controller_addEmployee(listaEmpleados)==0)
@@ -62,6 +68,10 @@ do{
 
             case 4:
                 controller_editEmployee(listaEmpleados);
+
+
+
+                break;
             case 5 :
                 if (controller_removeEmployee(listaEmpleados)==0)
                 {
@@ -69,12 +79,18 @@ do{
                 }
                 break;
             case 6 :
+            controller_ListEmployee(listaEmpleados);
+
                 break;
             case 7:
+
+
                 break;
             case 8:
                 break;
             case 9 :
+                        controller_saveAsBinary("data.bin",listaEmpleados);
+
                 break;
             case 10:
                     printf("\Saliendo! \n");

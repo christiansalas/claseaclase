@@ -37,7 +37,13 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+
+ FILE* pArchivo;
+    int retorno = -1;
+    pArchivo = fopen(path,"rb");
+      retorno=parser_EmployeeFromBinary(pArchivo, pArrayListEmployee);
+    fclose(pArchivo);
+    return retorno;
 }
 
 /** \brief Alta de empleados
@@ -91,11 +97,18 @@ int retorno = -1;
 int id;
         if (pArrayListEmployee != NULL
             &&
-            utn_getEntero(&id, 10, "Ingrese id", "id invalido", 3) == 0
+            utn_getEntero(&id, 10, "\n Ingrese id\n", "id invalido\n", 3) == 0
             &&
             Employee_BuscarPorId (pArrayListEmployee, id)== 0)
             {
+
+            retorno =0 ;
                 printf("Empleado modificado\n");
+
+            }
+            else
+            {
+            printf("\n El Id no existe!! \n");
             }
 
         return retorno;
@@ -113,6 +126,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
     int i;
     int id;
     int bufferId;
+
     Employee * auxPunteroEmpleado;
     if (pArrayListEmployee != NULL &&
         utn_getEntero(&id, 10, "Ingrese Id\n", "Id invalido", 3) == 0)
@@ -123,7 +137,12 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
             Employee_getId(auxPunteroEmpleado,&bufferId);
             if(bufferId == id)
             {
+
+
              Employee_delete(auxPunteroEmpleado);
+             ll_remove(pArrayListEmployee,i);
+
+
              retorno = 0;
              break;
             }
@@ -190,6 +209,30 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    FILE *pArchivo = fopen(path,"wb");
+    Employee * pEmpleado;
+    int i;
+
+    int retorno = -1;
+    if(pArchivo!= NULL)
+    {
+
+    for (i=0;i<ll_len(pArrayListEmployee);i++)
+        {
+       pEmpleado=ll_get(pArrayListEmployee,i);
+      // Employee_getNombre(pEmpleado,nombre);
+       //printf("\n %s",nombre);
+       fwrite(pEmpleado,sizeof(Employee),1,pArchivo);
+       retorno= 0;
+
+        }
+
+    }
+    fclose(pArchivo);
+
+    return retorno;
 }
+
+
+
 

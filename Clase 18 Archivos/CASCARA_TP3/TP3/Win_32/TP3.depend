@@ -143,3 +143,58 @@
 	<ctype.h>
 	"utn.h"
 
+1540946846 source:/home/alumno/Documentos/github/claseaclase/Clase 18 Archivos/CASCARA_TP3/TP3/Win_32/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"utn.h"
+
+1540935492 /home/alumno/Documentos/github/claseaclase/Clase 18 Archivos/CASCARA_TP3/TP3/Win_32/LinkedList.h
+
+1540935492 /home/alumno/Documentos/github/claseaclase/Clase 18 Archivos/CASCARA_TP3/TP3/Win_32/Employee.h
+	"LinkedList.h"
+
+1540935492 /home/alumno/Documentos/github/claseaclase/Clase 18 Archivos/CASCARA_TP3/TP3/Win_32/parser.h
+
+1540935492 /home/alumno/Documentos/github/claseaclase/Clase 18 Archivos/CASCARA_TP3/TP3/Win_32/utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1540945613 source:/home/alumno/Documentos/github/claseaclase/Clase 18 Archivos/CASCARA_TP3/TP3/Win_32/Employee.c
+	"Employee.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"utn.h"
+
+1540948260 source:/home/alumno/Documentos/github/claseaclase/Clase 18 Archivos/CASCARA_TP3/TP3/Win_32/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"utn.h"
+
+1540935492 /home/alumno/Documentos/github/claseaclase/Clase 18 Archivos/CASCARA_TP3/TP3/Win_32/Controller.h
+
+1540948142 source:/home/alumno/Documentos/github/claseaclase/Clase 18 Archivos/CASCARA_TP3/TP3/Win_32/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1540939032 source:/home/alumno/Documentos/github/claseaclase/Clase 18 Archivos/CASCARA_TP3/TP3/Win_32/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"utn.h"
+	"LinkedList.h"
+

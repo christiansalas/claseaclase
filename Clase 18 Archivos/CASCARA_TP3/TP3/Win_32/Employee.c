@@ -26,12 +26,26 @@ Employee* Employee_newConParametros(char* idStr,char* nombreStr,char* horasTraba
     Employee* this;
     this=Employee_new();
 
-    if(
+
+    if(isValidSoloNumeros(idStr,10)==0 && utn_isValidNombre(nombreStr,128)==0
+    && isValidSoloNumeros(horasTrabajadasStr,10)==0 && isValidSoloNumeros(sueldoStr,10)==0)
+  // )
+    {
+      /*if(
     !Employee_setId(this,atoi(idStr))&&
     !Employee_setNombre(this,nombreStr)&&
     !Employee_setHorasTrabajadas(this,atoi(horasTrabajadasStr))&&
-    !Employee_setSueldo(this,atoi(sueldoStr)))
+    !Employee_setSueldo(this,atoi(sueldoStr*/
+
+        Employee_setId(this,atoi(idStr));
+    Employee_setNombre(this,nombreStr);
+    Employee_setHorasTrabajadas(this,atoi(horasTrabajadasStr));
+    Employee_setSueldo(this,atoi(sueldoStr));
+
         return this;
+
+    }
+
 
     Employee_delete(this);
     return NULL;
@@ -75,7 +89,7 @@ int Employee_setNombre(Employee* this,char* nombre)
     {
         /*if (utn_isValidNombre(nombre,1024))
         {*/
-            strncpy(this->nombre,nombre, strlen(nombre));
+            strncpy(this->nombre,nombre,128 /*strlen(nombre)*/);
             retorno=0;
         //}
     }
