@@ -230,13 +230,27 @@ int ll_remove(LinkedList* this,int index)
     Node* auxNode;
     if(this != NULL && index < ll_len(this)&& index >=0 && ll_len(this)>=0  )
     {
-    auxNode= getNode(this,index);
-    getNode(this,index-1)->pNextNode = auxNode->pNextNode;
-    free(auxNode);
 
+        auxNode= getNode(this,index);
+        if (index ==0)
+        {
+        this->pFirstNode=auxNode->pNextNode;
+        }
+        else if(index >0 && index !=(ll_len(this)-1))
+        {
 
+            getNode(this, index -1)->pNextNode = auxNode->pNextNode;
 
-    }
+        }
+        else if(index>0 && index == (ll_len(this)-1))
+        {
+        getNode(this,index)->pNextNode== NULL;
+
+        }
+            this->size=(this->size)-1;
+            free(auxNode);
+            returnAux = 0;
+        }
 
     return returnAux;
 }
@@ -359,7 +373,7 @@ int ll_push(LinkedList* this, int index, void* pElement)
 {
     int returnAux = -1;
 
-    if(this != NULL && index >=0 && index < ll_len(this))
+    if(this != NULL && index >=0 && index <= ll_len(this))
     {
         addNode(this,index,pElement);
         returnAux = 0;
@@ -383,7 +397,7 @@ void* ll_pop(LinkedList* this,int index)
 
     if(this !=NULL && index >=0 && index < ll_len(this))
     {
-        returnAux = getNode(this,index);
+        returnAux = getNode(this,index)->pElement;
         ll_remove(this,index);
     }
 
@@ -433,8 +447,6 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
     int returnAux = -1;
     int contador=0;
     int i;
-
-
 
     if (this != NULL && this2 != NULL)
     {
@@ -528,8 +540,62 @@ LinkedList* ll_clone(LinkedList* this)
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux =-1;
+    int flagNoEstaOrdenado = 1;
+    int i;
+    Node* auxNode1;
+    Node *auxNode2;
+    void* element1;
+    void* element2;
+
+    if(this !=NULL && pFunc!=NULL && (order ==0 || order == 1))
+    {
+        int j, aux;
+            while (flagNoEstaOrdenado==1)
+            {
+                flagNoEstaOrdenado = 0;
+
+
+                for (j = 1; j < ll_len(this); j++)
+                {
+                auxNode1=getNode(this,j);
+                auxNode2=getNode(this,j-1);
+                element1=ll_get(this,j);
+                element2=ll_get(this ,j-1);
+
+                  if (order == 1 && pFunc(element1,element2)==-1)
+                    {
+                     auxNode1->pElement = element2;
+                    auxNode2->pElement = element1;
+                    flagNoEstaOrdenado = 1;
+
+
+
+                    }
+                    else if(order== 0  && pFunc(element1,element2)==1)
+                    {
+                        auxNode1->pElement = element2;
+                        auxNode2->pElement = element1;
+                        flagNoEstaOrdenado = 1;
+                    }
+                }
+
+            }
+            returnAux = 0;
+
+    }
+
+
 
     return returnAux;
 
 }
+
+/** \brief  filtra los elementos de la lista determinando si son mayor o menor.
+ *
+ * \param this LinkedList* Puntero a la lista
+ * \param this2 LinkedList* Puntero a la lista
+ * \return int Retorna  (-1) Error: si alguno de los punteros a las listas son NULL
+                        ( 1) Si los elementos de (this2) estan contenidos en la lista (this)
+                        ( 0) si los elementos de (this2) NO estan contenidos en la lista (this)
+*/
 

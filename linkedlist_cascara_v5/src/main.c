@@ -14,6 +14,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    la funcion filter llama a la funcion que pasamors por argumento,
+    realizar la funcion que compara
 */
 
 
@@ -33,18 +35,18 @@ int main(void)
         startTesting(5);  // ll_add
         startTesting(6);  // ll_get
         startTesting(7);  // ll_set
-        startTesting(8);  // ll_remove
-        startTesting(9);  // ll_clear
-        startTesting(10); // ll_deleteLinkedList
-        startTesting(11); // ll_indexOf
-        startTesting(12); // ll_isEmpty
+       startTesting(8);  // ll_remove
+       startTesting(9);  // ll_clear
+       startTesting(10); // ll_deleteLinkedList
+       startTesting(11); // ll_indexOf
+       startTesting(12); // ll_isEmpty
         startTesting(13); // ll_push
         startTesting(14); // ll_pop
         startTesting(15); // ll_contains
         startTesting(16); // ll_containsAll
         startTesting(17); // ll_subList
         startTesting(18); // ll_clone
-   /*     startTesting(19); // ll_sort */
+       startTesting(19); // ll_sort */
 
     return 0;
 }
