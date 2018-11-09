@@ -590,12 +590,46 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 
 }
 
-/** \brief  filtra los elementos de la lista determinando si son mayor o menor.
- *
- * \param this LinkedList* Puntero a la lista
- * \param this2 LinkedList* Puntero a la lista
- * \return int Retorna  (-1) Error: si alguno de los punteros a las listas son NULL
-                        ( 1) Si los elementos de (this2) estan contenidos en la lista (this)
-                        ( 0) si los elementos de (this2) NO estan contenidos en la lista (this)
-*/
+
+/** \brief Ordena los elementos de la lista utilizando la funcion criterio recibida como parametro
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio
+ * \param order int  [1] Indica orden ascendente - [0] Indica orden descendente
+ * \return int Retorna  (-1) Error: si el puntero a la listas es NULL
+                                ( 0) Si ok
+  */
+int ll_filter(LinkedList* this, int (*pFunc)(void*))
+{
+int retorno = -1;
+int i;
+LinkedList* listfilter;
+void *element1;
+
+                if(this != NULL && pFunc!=NULL)
+                {
+                    for (i=0;i<ll_len(this);i++)
+                        {
+
+                        listfilter=ll_newLinkedList();
+                        ll_get(this,i);
+                            if(pFunc(element1)==0)
+                                {
+                                    ll_add(listfilter,element1);
+                                    retorno = element1;
+
+                                }
+
+                        }
+
+
+                }
+
+
+
+
+return retorno;
+
+
+
+}
 
