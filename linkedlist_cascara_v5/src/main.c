@@ -24,10 +24,31 @@
 #include <string.h>
 #include "../testing/inc/main_test.h"
 #include "../inc/LinkedList.h"
+#include "../testing/inc/Employee.h"
+
+/*
+
+int salaryFilter (void* pElement)
+{
+    int returnAux = 0;
+    Employee* pEmployee = pElement;
+
+
+    if(pEmployee != NULL && pEmployee->salary == 1500)
+    {
+        returnAux = 1;
+    }
+    return returnAux;
+}
+*/
 
 
 int main(void)
 {
+
+
+
+
        startTesting(1);  // ll_newLinkedList
         startTesting(2);  // ll_len
         startTesting(3);  // getNode - test_getNode
